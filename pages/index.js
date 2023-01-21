@@ -39,12 +39,11 @@ export default function Home() {
   const [location, setLocation] = useState('');
   const [data, setData] = useState({});
   const [weather, setWeather] = useState();
-  const [main, setMain] = useState();
   const [errorMessage, setErrorMessage] = useState('');
 
 
 
-  var apiKey = "f13ce6f2dd17c6f04a5c7d2bde365072";
+  var apiKey =process.env.NEXT_PUBLIC_apiKey;
   var lang = "kr";
   var units = "metric";
 
@@ -59,7 +58,6 @@ export default function Home() {
         setData(response.data);
         console.log(response.data);
         setWeather(response.data.weather);
-        setMain(response.data.main);
         setErrorMessage("");
 
       }).catch(err => {
@@ -67,7 +65,6 @@ export default function Home() {
         setErrorMessage("Please enter another location");
         setData({});
         setWeather();
-        setMain();
       })
       setLocation('')
     }
