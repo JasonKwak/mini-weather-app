@@ -111,7 +111,8 @@ export default function Home() {
                 main={w.main}
                 feels={data.main.feels_like}
                 gust={data.wind.gust}
-                icon={`${w.main}.json`}
+                // icon={`${w.main}.json`}
+                icon='clouds.json'
                 />
               </div>
             )
