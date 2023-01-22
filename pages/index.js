@@ -87,10 +87,10 @@ export default function Home() {
         <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500&display=swap" rel="stylesheet"/>
         <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"></link>
       </Head>
-
+{/* 
       <Fade>
       <Image className={styles.fade} layout="fill" src={`/images/${background}.jpg`} alt={`${background}`} priority={true}/>
-      </Fade>
+      </Fade> */}
 
       <LogoCont className={styles.logocont}>
         <Image style={{position:'static'}}src={Logo} width={135} height={40} alt="logo"/>
@@ -99,7 +99,7 @@ export default function Home() {
       <Overlay/>
 
 
-      <main className={styles.main}>
+      <main className={styles.main} style={{backgroundImage: `url("images/${background}.jpg")`, backgroundSize: "cover"}}>
 
           <div className={styles.col3}>
             <Input className={styles.effect4}
@@ -122,8 +122,8 @@ export default function Home() {
                 main={w.main}
                 feels={data.main.feels_like}
                 gust={data.wind.gust}
-                icon={`/animations/${w.main}.json`}
-                // icon='clouds.json'
+                // icon={`/animations/${w.main}.json`}
+                icon={'/animations/Clouds.json'}
                 />
               </div>
             )
