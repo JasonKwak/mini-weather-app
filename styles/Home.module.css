@@ -384,6 +384,11 @@
   margin-bottom:5%;
 }
 
+.fade{
+  transition: background-image 5s ease-in-out;
+
+}
+
 @media only screen and (max-device-width: 480px) {
   .col3{
     width:13rem;
@@ -443,6 +448,11 @@
     justify-content:center;
     align-items:center;
     width:200px;
+  }
+
+  .fade{
+    width: 100vw !important;
+    object-fit: cover !important; 
   }
 
 }

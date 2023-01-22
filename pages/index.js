@@ -7,13 +7,13 @@ import axios from 'axios';
 import Header from '@/components/header/header';
 import Card from '@/components/card/card';
 import { Player, Controls } from '@lottiefiles/react-lottie-player';
-import Logo from '@/public/Logo2.png'
+import Logo from '@/public/Logo3.png';
 
-const Background = styled.div`
+const Overlay = styled.div`
 width:100vw;
 max-height:100vh;
 height:100%;
-background: linear-gradient(to bottom right, #FFFFFF 0%, #3cc0fe 60%, #0066ff);
+background: linear-gradient(to bottom right, #FFFFFF 0%, #dddddd 30%, #848484 60%, #4c4c4c 100%);
 position:absolute;
 z-index:-1;
 `
@@ -33,6 +33,10 @@ color:gray;
 width:80%;
 `
 
+const Fade = styled.div`
+opacity:0.6;
+`
+
 
 export default function Home() {
 
@@ -41,6 +45,7 @@ export default function Home() {
   const [weather, setWeather] = useState();
   const [errorMessage, setErrorMessage] = useState('');
   const [trigger, setTrigger] = useState(false);
+  const [background, setBackground] = useState("sky");
 
   var apiKey =process.env.NEXT_PUBLIC_apiKey;
   var lang = "kr";
@@ -60,6 +65,7 @@ export default function Home() {
         setWeather(response.data.weather);
         setErrorMessage("");
         setTrigger(false);
+        setBackground(response.data.weather[0].main);
       }).catch(err => {
         console.log(err);
         setErrorMessage("Invalid Location. Please enter another location!");
@@ -82,11 +88,16 @@ export default function Home() {
         <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"></link>
       </Head>
 
+      <Fade>
+      <Image className={styles.fade} layout="fill" src={`/images/${background}.jpg`} alt={`${background}`} priority={true}/>
+      </Fade>
+
       <LogoCont className={styles.logocont}>
-        <Image style={{position:'absolute'}}src={Logo} width={135} height={40} alt="logo"/>
+        <Image style={{position:'static'}}src={Logo} width={135} height={40} alt="logo"/>
       </LogoCont>
       
-      <Background/>
+      <Overlay/>
+
 
       <main className={styles.main}>
 
@@ -125,7 +136,7 @@ export default function Home() {
           className={styles.animation}
           autoplay
           loop
-          src='error.json'
+          src='/animations/error.json'
           ></Player>
           <div style={{fontSize:'14px', color:'white'}}>
             {errorMessage}
