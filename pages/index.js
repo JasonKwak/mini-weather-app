@@ -29,7 +29,7 @@ const Input = styled.input`
 margin-top:5%;
 border-radius:5px;
 font-family: 'Unbounded';
-color:#802392;
+color:gray;
 width:80%;
 `
 
@@ -40,8 +40,7 @@ export default function Home() {
   const [data, setData] = useState({});
   const [weather, setWeather] = useState();
   const [errorMessage, setErrorMessage] = useState('');
-
-
+  const [trigger, setTrigger] = useState(false);
 
   var apiKey =process.env.NEXT_PUBLIC_apiKey;
   var lang = "kr";
@@ -49,6 +48,7 @@ export default function Home() {
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=${units}&appid=${apiKey}&lang=${lang}`;
   console.log(url)
+
 
   const searchLocation = (event) => {
     if(event.key === "Enter") {
@@ -59,12 +59,13 @@ export default function Home() {
         console.log(response.data);
         setWeather(response.data.weather);
         setErrorMessage("");
-
+        setTrigger(false);
       }).catch(err => {
         console.log(err);
-        setErrorMessage("Please enter another location");
+        setErrorMessage("Invalid Location. Please enter another location!");
         setData({});
         setWeather();
+        setTrigger(true);
       })
       setLocation('')
     }
@@ -96,15 +97,13 @@ export default function Home() {
             onChange= {event => setLocation(event.target.value)}
             placeholder = "Enter Location"
             onKeyDown= {searchLocation}/>
-
             <span className={styles.focusborder}/>
           </div>
-
 
         {
           weather && weather.map((w, index) => {
             return (
-              <div key={index}>
+              <div key={index} className={styles.CardCont}>
                 <Card
                 temp={data.main.temp}
                 city={data.name}
@@ -118,6 +117,21 @@ export default function Home() {
             )
           })
         }
+        
+        {trigger ?
+        <div className={styles.error}>
+          <Player
+          className={styles.animation}
+          autoplay
+          loop
+          src='error.json'
+          ></Player>
+          <div style={{fontSize:'14px', color:'white'}}>
+            {errorMessage}
+          </div>
+        </div>
+        : "" }
+
 
       </main>
     </>

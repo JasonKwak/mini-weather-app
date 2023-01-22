@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import styles from '@/styles/Home.module.css'
 import { Player, Controls } from '@lottiefiles/react-lottie-player';
-import { weatherData } from "../data/data";
 import { motion } from "framer-motion"
 
 const Wrapper = styled.div`
@@ -13,6 +12,7 @@ background: linear-gradient(to bottom right, #3cc0fe 20%, #0066ff);
 box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 border-radius:8px;
 position:relative;
+margin-top:-10%;
 `
 
 const SubBg = styled.div`
@@ -34,8 +34,7 @@ justify-content:center;
 align-items:flex-start;
 text-align:left;
 z-index:1;
-padding: 6% 4%;
-margin:5%;
+padding: 5% 4%;
 width:100%;
 `
 
