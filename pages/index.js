@@ -123,7 +123,7 @@ export default function Home() {
                 main={w.main}
                 feels={data.main.feels_like}
                 gust={data.wind.gust}
-                icon={`/animations/${w.main}.json`}
+                icon={`/animations/${w.main.toLowerCase()}.json`}
                 // icon={'/animations/clouds.json'}
                 />
               </div>
