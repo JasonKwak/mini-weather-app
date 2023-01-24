@@ -1,11 +1,29 @@
+## Getting Started
+First, install the package:
+
+```bash
+npm install
+# or
+yarn install
+```
+Second, run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+```
+
 # One-Page Weather App
 
 ## Description
-> This is a one-page weather app project by Jason Kwak.
+> TracSky is a one-page weather tracking app made by Jason Kwak. Enter your desired location in the input field and quickly discover the current weather condition.
 
 ## API Source
-> https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
+> https://api.openweathermap.org
 
 ## Tools & Languages Used
-> NextJS, JavaScript
+> VS Code, StackOverflow, ReactJS, JavaScript
 
