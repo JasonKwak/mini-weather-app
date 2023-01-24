@@ -16,7 +16,7 @@ yarn dev
 pnpm dev
 ```
 
-# One-Page Weather App
+# TracSky
 
 ## Description
 > TracSky is a one-page weather tracking app made by Jason Kwak. Enter your desired location in the input field and quickly discover the current weather condition.
